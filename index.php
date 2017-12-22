@@ -2,13 +2,30 @@
   <meta charset=utf8>
   <meta name=viewport content="width=device-width">
   <link rel=stylesheet href=css.css>
-  <script src=jugadors.js></script>
+  <script>
+    var Jugadors=[
+      {nom:"Aina",     path:"img/aina.jpg"},
+      {nom:"Alba",     path:"img/alba.jpg"},
+      {nom:"Diana",    path:"img/diana.jpg"},
+      {nom:"Fede",     path:"img/fede.jpg"},
+      {nom:"Frans",    path:"img/frans.jpg"},
+      {nom:"Jaume",    path:"img/jaume.jpg"},
+      {nom:"Laura",    path:"img/laura.jpg"},
+      {nom:"Lluís",    path:"img/lluis.jpg"},
+      {nom:"Màrius",   path:"img/marius.jpg"},
+      {nom:"Núria",    path:"img/nuria.jpg"},
+      {nom:"Paton",    path:"img/paton.jpg"},
+      {nom:"Queralt",  path:"img/queralt.jpg"},
+      {nom:"Rosa",     path:"img/rosa.jpg"},
+      {nom:"Rut",      path:"img/rut.jpg"},
+      {nom:"Sandra",   path:"img/sandra.jpg"},
+      {nom:"Àlex",     path:"img/alex.jpg"},
+    ];
+  </script>
 </head><body>
-
 <!--tria jugador-->
 <div id=tria_jugador style=text-align:center;margin-bottom:5px>
-  <select tipus=blanca></select>
-  vs
+  <select tipus=blanca></select> vs
   <select tipus=negra></select>
   <script>
     (function(){
@@ -31,7 +48,6 @@
           }
         }
       }
-
       //tria la laura per defecte a les blanques
       var s=document.querySelector('select[tipus=blanca]');
       s.value="img/laura.jpg";
@@ -39,22 +55,19 @@
     })();
   </script>
 </div>
-
 <!--taulell-->
 <table id=taulell border=1>
   <?php for($i=0;$i<8;$i++){echo "<tr row=$i>";for($j=0;$j<8;$j++){echo "<td col=$j>";}}?>
 </table>
 
+<!--codi principal-->
 <script>
   //get cela by x,y
   function getCela(x,y){return document.querySelector('#taulell tr[row="'+x+'"] td[col="'+y+'"]');}
-
   //get fitxa tipus, numero
   function getFitxa(tipus,numero){return document.querySelector('fitxa[tipus='+tipus+'][numero="'+numero+'"]');}
-
   //comprova quina fitxa hi ha a la cela x,y (null per defecte)
   function comprovaCela(x,y){return getCela(x,y).querySelector('fitxa');}
-
   //ressalta un array de celes
   function ressaltaCeles(celes){
     //reset a les ja ressaltades
@@ -66,10 +79,8 @@
     //ressalta array de celes
     celes.forEach(c=>{c.classList.add('ressaltada')});
   }
-
   //comprova si una fitxa es reina
   function isReina(fitxa){if(!fitxa){return false}return fitxa.classList.contains('reina');}
-
   //mou fitxa a destí x,y
   function mouFitxa(fitxa,cela){
     //agafa coordenades per trobar la fitxa a matar
@@ -86,20 +97,16 @@
       console.log("mat: "+f_x+","+f_y)
       mataFitxa(comprovaCela(f_x,f_y));
     }
-
     //mou
     cela.appendChild(fitxa);
     //fes reina la fitxa
     if(fitxa.getAttribute('tipus')=='blanca' && cela.parentNode.getAttribute('row')=="0"){fesReina(fitxa)}
     if(fitxa.getAttribute('tipus')=='negra'  && cela.parentNode.getAttribute('row')=="7"){fesReina(fitxa)}
   }
-
   //fes reina una fitxa
   function fesReina(fitxa){if(fitxa)fitxa.classList.add('reina')}
-
   //mata fitxa
   function mataFitxa(fitxa){if(fitxa)fitxa.parentNode.removeChild(fitxa);}
-
   //comprova els moviments possibles des de la cela d'origen (retorna celes de destí)
   function celesPossibles(fitxa){
     //fitxa origen
@@ -161,7 +168,6 @@
     }
     return destins;
   }
-
   //selecciona fitxa
   function seleccionaFitxa(fitxa){
     //desressalta altres
@@ -227,10 +233,8 @@
   //posa listeners onclick=seleccionaFitxa(this)
   (function(){
     var fitxes=document.querySelectorAll('fitxa');
-    for(var i=0;i<fitxes.length;i++){
-      fitxes[i].onclick=function(){
-        seleccionaFitxa(this);
-      }
+    for(var i=0;i<fitxes.length;i++){ 
+      fitxes[i].onclick=function(){ seleccionaFitxa(this); } 
     }
   })();
 </script>

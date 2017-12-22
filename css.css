@@ -1,0 +1,54 @@
+/*elements en general*/
+body{
+  margin:0;
+  margin-top:6px;
+}
+
+/*taulell*/
+#taulell{
+  border-collapse:collapse;
+  margin:auto;
+}
+#taulell td{
+  width:50px;
+  height:50px;
+  padding:0;
+}
+/*caselles negres*/
+#taulell tr:nth-child(2n+1) td:nth-child(2n),
+#taulell tr:nth-child(2n) td:nth-child(2n+1){
+  background:#ccc;
+}
+#taulell td.ressaltada{
+  background:#af0 !important;
+}
+
+/*fitxes*/
+fitxa{
+  display:block;
+  padding:0;
+  width:40px;
+  height:40px;
+  margin:auto;
+  border:3px solid;
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+fitxa[tipus=blanca]{
+  border-color:white;
+  background-image:url(img/laura.jpg);
+}
+fitxa[tipus=negra]{
+  border-color:black;
+  background-image:url(img/aina.jpg);
+  /*
+  transform:rotate(180deg);
+  */
+}
+fitxa.reina{
+  border-color:gold;
+}
+fitxa.seleccionada{
+  border-color:blue;
+}

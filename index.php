@@ -51,7 +51,6 @@
       //tria la laura per defecte a les blanques
       var s=document.querySelector('select[tipus=blanca]');
       s.value="img/laura.jpg";
-      s.onchange();
     })();
   </script>
 </div>
@@ -246,6 +245,6 @@
     Tites i tetes software © Copyright 1989-2017
   </div>
   <div>
-    <a href="///github.com/holalluis/dames2000">Codi font</a>
+    <a href="///github.com/holalluis/dames2000" target=_blank>Codi font</a>
   </div>
 </footer>
